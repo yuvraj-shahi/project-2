@@ -11,8 +11,8 @@ struct book
 
 void addbook(struct book *);
 void display(struct book *b , char *n );
-//void search();
-//void delete();
+void search();
+void delete();
 
 int main ()
 {
