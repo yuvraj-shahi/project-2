@@ -89,22 +89,11 @@ void display(struct book *b, char *n)
     printf("The file is not exist");
     exit(1);
   }
-  while (fgets(b[k].title, sizeof(b[k].title), file)) {
-    // Remove newline character from title if present
-    b[k].title[strcspn(b[k].title, "\n")] = '\0';
-
-    fgets(b[k].author, sizeof(b[k].author), file);
-    // Remove newline character from author if present
-    b[k].author[strcspn(b[k].author, "\n")] = '\0';
-
-    fscanf(file, "%d\n", &b[k].ISBN); // Read ISBN
-
+  
+  while (fscanf(file, "%s%s%d", b[k].title, b[k].author, &b[k].ISBN) != EOF)
+  {
     k++;
-}
-  //while (fscanf(file, "%s%s%d", b[k].title, b[k].author, &b[k].ISBN) != EOF)
-  //{
-  //  k++;
-  //}
+  }
   if (k == 0)
   {
     printf("No books available");
